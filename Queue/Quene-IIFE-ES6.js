@@ -8,11 +8,13 @@ let Queue2 = (function () {
             items.set(this, []);
         }
 
+        //enter quene
         enqueue(element) {
             let q = items.get(this);
             q.push(element);
         }
 
+        //delete element
         dequeue() {
             let q = items.get(this);
             let r = q.shift();
@@ -45,5 +47,7 @@ let Queue2 = (function () {
             return items.get(this).toString();
         }
     }
+
     return Queue2;
+
 })();
