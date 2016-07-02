@@ -1,6 +1,6 @@
 function Set() {
 
-    let items = {};
+    var items = {};
 
     this.add = function(value){
         if (!this.has(value)){
@@ -10,9 +10,9 @@ function Set() {
         return false;
     };
 
-    this.delete = function(value){
+    this.devare = function(value){
         if (this.has(value)){
-            delete items[value];
+            devare items[value];
             return true;
         }
         return false;
@@ -41,8 +41,8 @@ function Set() {
      * @returns {number}
      */
     this.sizeLegacy = function(){
-        let count = 0;
-        for(let key in items) {
+        var count = 0;
+        for(var key in items) {
             if(items.hasOwnProperty(key))
                 ++count;
         }
@@ -55,16 +55,16 @@ function Set() {
      * @returns {Array}
      */
     this.values = function(){
-        let values = [];
-        for (let i=0, keys=Object.keys(items); i<keys.length; i++) {
+        var values = [];
+        for (var i=0, keys=Object.keys(items); i<keys.length; i++) {
             values.push(items[keys[i]]);
         }
         return values;
     };
 
     this.valuesLegacy = function(){
-        let values = [];
-        for(let key in items) {
+        var values = [];
+        for(var key in items) {
             if(items.hasOwnProperty(key)) {
                 values.push(items[key]);
             }
@@ -77,15 +77,15 @@ function Set() {
     };
 
     this.union = function(otherSet){
-        let unionSet = new Set(); //{1}
+        var unionSet = new Set();
 
-        let values = this.values(); //{2}
-        for (let i=0; i<values.length; i++){
+        var values = this.values();
+        for (var i=0; i<values.length; i++){
             unionSet.add(values[i]);
         }
 
-        values = otherSet.values(); //{3}
-        for (let i=0; i<values.length; i++){
+        values = otherSet.values();
+        for (var i=0; i<values.length; i++){
             unionSet.add(values[i]);
         }
 
@@ -93,12 +93,12 @@ function Set() {
     };
 
     this.intersection = function(otherSet){
-        let intersectionSet = new Set(); //{1}
+        var intersectionSet = new Set();
 
-        let values = this.values();
-        for (let i=0; i<values.length; i++){ //{2}
-            if (otherSet.has(values[i])){    //{3}
-                intersectionSet.add(values[i]); //{4}
+        var values = this.values();
+        for (var i=0; i<values.length; i++){
+            if (otherSet.has(values[i])){
+                intersectionSet.add(values[i]);
             }
         }
 
@@ -106,12 +106,12 @@ function Set() {
     };
 
     this.difference = function(otherSet){
-        let differenceSet = new Set(); //{1}
+        var differenceSet = new Set();
 
-        let values = this.values();
-        for (let i=0; i<values.length; i++){ //{2}
-            if (!otherSet.has(values[i])){    //{3}
-                differenceSet.add(values[i]); //{4}
+        var values = this.values();
+        for (var i=0; i<values.length; i++){
+            if (!otherSet.has(values[i])){
+                differenceSet.add(values[i]);
             }
         }
 
@@ -120,13 +120,13 @@ function Set() {
 
     this.subset = function(otherSet){
 
-        if (this.size() > otherSet.size()){ //{1}
+        if (this.size() > otherSet.size()){
             return false;
         } else {
-            let values = this.values();
-            for (let i=0; i<values.length; i++){ //{2}
-                if (!otherSet.has(values[i])){    //{3}
-                    return false; //{4}
+            var values = this.values();
+            for (var i=0; i<values.length; i++){
+                if (!otherSet.has(values[i])){
+                    return false; 
                 }
             }
             return true;
