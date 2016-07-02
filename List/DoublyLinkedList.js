@@ -139,14 +139,12 @@ function DoublyLinkedList() {
         let current = head,
             index = -1;
 
-        //check first item
         if (element == current.element){
             return 0;
         }
 
         index++;
 
-        //check in the middle of the list
         while(current.next){
 
             if (element == current.element){
