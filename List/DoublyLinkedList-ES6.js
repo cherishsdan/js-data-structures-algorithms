@@ -4,13 +4,13 @@ let DoublyLinkedList2 = (function () {
         constructor(element) {
             this.element = element;
             this.next = null;
-            this.prev = null; //NEW
+            this.prev = null;
         }
     }
 
     const length = new WeakMap();
     const head = new WeakMap();
-    const tail = new WeakMap(); //NEW
+    const tail = new WeakMap();
 
     class DoublyLinkedList2 {
 
@@ -27,9 +27,8 @@ let DoublyLinkedList2 = (function () {
 
             if (this.getHead() === null) { //first node on list
                 head.set(this, node);
-                tail.set(this, node); //NEW
+                tail.set(this, node);
             } else {
-                //attach to the tail node //NEW
                 _tail = this.getTail();
                 _tail.next = node;
                 node.prev = _tail;
@@ -44,7 +43,6 @@ let DoublyLinkedList2 = (function () {
 
         insert(position, element) {
 
-            //check for out-of-bounds values
             if (position >= 0 && position <= this.size()) {
 
                 let node = new Node(element),
@@ -52,37 +50,36 @@ let DoublyLinkedList2 = (function () {
                     previous,
                     index = 0;
 
-                if (position === 0) { //add on first position
+                if (position === 0) {
 
-                    if (!this.getHead()) {       //NEW
+                    if (!this.getHead()) {
                         head.set(this, node);
                         tail.set(this, node);
                     } else {
                         node.next = current;
-                        current.prev = node; //NEW {1}
+                        current.prev = node;
                         head.set(this, node);
                     }
 
-                } else if (position === this.size()) { //last item //NEW
+                } else if (position === this.size()) {
 
-                    current = tail;     // {2}
+                    current = tail;
                     current.next = node;
                     node.prev = current;
                     tail.set(this, node);
 
                 } else {
-                    while (index++ < position) { //{3}
+                    while (index++ < position) {
                         previous = current;
                         current = current.next;
                     }
                     node.next = current;
                     previous.next = node;
 
-                    current.prev = node; //NEW
-                    node.prev = previous; //NEW
+                    current.prev = node;
+                    node.prev = previous;
                 }
 
-                //update size of list
                 let l = this.size();
                 l++;
                 length.set(this, l);
@@ -108,31 +105,31 @@ let DoublyLinkedList2 = (function () {
                 //removing first item
                 if (position === 0) {
 
-                    _head = current.next; // {1}
+                    _head = current.next;
 
                     //if there is only one item, then we update tail as well //NEW
-                    if (this.size() === 1) { // {2}
+                    if (this.size() === 1) {
                         _tail = null;
                     } else {
-                        _head.prev = null; // {3}
+                        _head.prev = null;
                     }
 
                 } else if (position === this.size() - 1) { //last item //NEW
 
-                    current = _tail; // {4}
+                    current = _tail;
                     _tail = current.prev;
                     _tail.next = null;
 
                 } else {
 
-                    while (index++ < position) { // {5}
+                    while (index++ < position) {
 
                         previous = current;
                         current = current.next;
                     }
 
                     //link previous with current's next - skip it to remove
-                    previous.next = current.next; // {6}
+                    previous.next = current.next;
                     current.next.prev = previous; //NEW
                 }
 

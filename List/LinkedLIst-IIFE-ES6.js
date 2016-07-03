@@ -1,4 +1,9 @@
-let LinkedList2 = (function () {
+/**
+* @class LinkedList
+* 
+**/
+
+let LinkedList = (function () {
 
     class Node {
         constructor(element){
@@ -10,7 +15,7 @@ let LinkedList2 = (function () {
     const length = new WeakMap();
     const head = new WeakMap();
 
-    class LinkedList2 {
+    class LinkedList {
 
         constructor () {
             length.set(this, 0);
@@ -166,5 +171,5 @@ let LinkedList2 = (function () {
         }
     }
 
-    return LinkedList2;
+    return LinkedList;
 })();
