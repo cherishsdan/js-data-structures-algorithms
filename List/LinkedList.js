@@ -1,5 +1,8 @@
+/**
+* @class LinkList
+*/
+
 function LinkedList () {
-     // body...  
     let Node = function(element){
         this.element = element;
         this.next = null;
