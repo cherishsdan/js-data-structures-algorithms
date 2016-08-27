@@ -4,8 +4,55 @@
     <title></title>
 </head>
 <body>
-<script type="text/javascript" src="Queue/quene.js"></script>
-<script src = "Queue/hotPotato.js"></script>
+
+
+<script>
+function merge(left,right){
+    var result = [];
+    var leftIndex = 0;
+    var rightIndex = 0;
+    var str = '';
+
+    //去掉数组中重复的字符
+/*    var left=left[0].filter(function(item,index,array){
+            return array.indexOf(item) === index;
+        });
+    console.log(left);
+    console.log(left[1]);
+
+    var right = right[0].filter(function(item,index,array){
+            return array.indexOf(item) === index;
+        });
+    console.log(right);*/
+
+
+    for (var leftIndex = 0; leftIndex < left[0].length; leftIndex++) {
+        for (var rightIndex = 0; rightIndex < right[0].length; rightIndex++) {
+                str = left[0][leftIndex]+''+right[0][rightIndex]+'';
+                console.log(str);
+                result.push(str);
+        }
+    }
+    return result;
+}
+function mergeElements(arr){
+    var len = arr.length;
+
+    if (len<=1) {
+        return arr;
+    }
+
+    var middle = Math.floor(len/2);
+    var left = arr.slice(0,middle);
+    var right = arr.slice(middle);
+
+    return merge(mergeElements(left),mergeElements(right));
+}
+
+
+var arr = [['a','b'],['c','d'],['g','h'],['e','f']];
+console.log(mergeElements(arr));
+</script>
 
 </body>
-</html>
+</html> 
